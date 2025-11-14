@@ -1,0 +1,6 @@
+"哪個函數是用來設定後續繪製圖形的邊框顏色？","fill()","stroke()","color()","outline()","B"
+"在 p5.js 中，哪個內建變數可以取得畫布的總寬度？","totalWidth","canvasWidth","W","width","D"
+"用於載入外部檔案(如圖片或CSV)的函數是?","createCanvas()","background()","preload()","fill()","C"
+"設定畫布大小的函數是?","setSize()","canvas()","createCanvas()","window()","C"
+"在 p5.js 程式中，哪個程式碼區塊總是第一個執行，  用來初始化設定（例如建立畫布）？","main()","start()","setup()","draw()","C"
+"p5.js的畫布原點(0,0)在哪個位置?","左上角","右下角","中心","左下角","A"
