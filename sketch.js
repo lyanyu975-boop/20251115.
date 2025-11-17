@@ -26,8 +26,15 @@ let feedbackTimer = 0;
 
 
 function preload() {
-  // 載入 CSV 檔案，指定 'csv' 格式且沒有標頭
-  questionTable = loadTable('questions.csv', 'csv');
+  // 載入 CSV 檔案，注意檔名大小寫必須與工作目錄一致
+  // 若檔案未載入（例如直接以 file:// 開啟而非啟動本機伺服器），
+  // p5.js 會在主控台顯示錯誤。這裡嘗試載入並讓後續程式檢查是否成功。
+  try {
+    questionTable = loadTable('QUESTIONS.CSV', 'csv');
+  } catch (e) {
+    console.error('loadTable threw:', e);
+    questionTable = null;
+  }
 }
 
 
@@ -78,6 +85,12 @@ function windowResized() {
 
 
 function processData() {
+  // 確認 questionTable 已正確載入，否則停下並在 console 報錯。
+  if (!questionTable || typeof questionTable.getRows !== 'function') {
+    console.error('questionTable is not available. 確認檔名為 QUESTIONS.CSV 並且使用本機伺服器(host)。');
+    return;
+  }
+
   for (let row of questionTable.getRows()) {
     allQuestions.push({
       question: row.getString(0),
@@ -378,7 +391,4 @@ function drawParticles() {
     ellipse(p.x, p.y, p.r);
   }
 }
-
-
-
 
